@@ -1,5 +1,21 @@
 const fs = require('fs');
 
+//MAIN FUNCTION
+readGraph().then(function(plainGraph){
+		buildObjectArray(plainGraph).then(function(graphObject){
+			// console.log(graphObject);
+			countNodes(graphObject).then(function(numberOfNodes){
+				var n = numberOfNodes.length;
+				var out = "# n = " + n + "\r\n";
+				writeSomething(out, "graph.txt");
+			});
+		},function(err){
+			console.log(err);
+		});
+
+},function(err){
+	console.log(err);
+});
 
 function readGraph(){
 	return new Promise(function(resolve, reject){
@@ -26,21 +42,6 @@ function readGraph(){
 	
 };
 
-readGraph().then(function(plainGraph){
-		buildObjectArray(plainGraph).then(function(graphObject){
-			// console.log(graphObject);
-			countNodes(graphObject).then(function(numberOfNodes){
-				var n = numberOfNodes.length;
-				var out = "# n = " + n + "\r\n";
-				writeSomething(out, "graph.txt");
-			});
-		},function(err){
-			console.log(err);
-		});
-
-},function(err){
-	console.log(err);
-});
 
 function buildObjectArray(plainGraph){
 	return new Promise(function(resolve,reject){
