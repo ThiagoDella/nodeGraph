@@ -3,7 +3,7 @@ module.exports = function(){
 	return new Promise(function(resolve, reject){
 
 		var lines;
-		fs.readFile('grafo_1.txt','utf-8', function(err,data){
+		fs.readFile('grafo_4.txt','utf-8', function(err,data){
 			if(err){
 				reject("Error while opening the file. ",err);
 			}else{
